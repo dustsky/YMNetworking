@@ -12,13 +12,17 @@ protocol FlyAbsRequestHeaderProtocol {
     
 }
 
-protocol FlyRequestContentProtocol {
+protocol FlyAbsRequestContentProtocol {
     
 }
 
-protocol FlyRequestConfigureProtocol {
+protocol FlyAbsRequestConfigureProtocol {
     
 //    func cancel() -> Void;
     
 }
 
+
+protocol Fly {
+    
+}

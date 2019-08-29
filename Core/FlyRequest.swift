@@ -9,20 +9,41 @@
 import Foundation
 
 
-struct FlyRequestHeader : FlyRequestHeaderProtocol {
+class FlyRequestHeader : FlyAbsRequestHeaderProtocol {
+    
     
 }
 
-struct FlyRequestContent<T> : FlyRequestContentProtocol {
+
+class DefalutRequestHeader : FlyRequestHeader {
+    var shopId : String?
+    var brandId : String?
+    
+    class func defaultHeader() -> Dictionary<String, Any> {
+        return Dictionary()
+    }
+    
+    required init(shopId : String?, brandId : String?) {
+        self.shopId = shopId
+        self.brandId = brandId
+    }
+    
+    convenience init(brandId : String) {
+        self.init(shopId: nil, brandId: brandId)
+    }
+}
+
+struct FlyRequestContent<T> : FlyAbsRequestContentProtocol {
     var data : T?
-    
 }
 
-struct FlyRequestConfigure : FlyRequestConfigureProtocol {
+struct FlyRequestConfigure : FlyAbsRequestConfigureProtocol {
     
 }
 
 struct FlyRequest<T> {
     var header : FlyRequestHeader?
     var content : FlyRequestContent<T>?
+    
+    
 }
